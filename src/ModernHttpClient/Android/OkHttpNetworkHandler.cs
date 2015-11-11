@@ -38,6 +38,8 @@ namespace ModernHttpClient
 
             if (customSSLVerification) client.SetHostnameVerifier(new HostnameVerifier());
             noCacheCacheControl = (new CacheControl.Builder()).NoCache().Build();
+            var factory = new ImprovedSSLSocketFactory();
+            client.SetSslSocketFactory(factory);
         }
 
         public void RegisterForProgress(HttpRequestMessage request, ProgressDelegate callback)
